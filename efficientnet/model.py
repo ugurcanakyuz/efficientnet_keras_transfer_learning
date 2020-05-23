@@ -64,7 +64,7 @@ class ConvKernalInitializer(Initializer):
         del partition_info
         kernel_height, kernel_width, _, out_filters = shape
         fan_out = int(kernel_height * kernel_width * out_filters)
-        return tf.random_normal(
+        return tf.random.normal(
             shape, mean=0.0, stddev=np.sqrt(2.0 / fan_out), dtype=dtype)
 
 class DenseKernalInitializer(Initializer):
@@ -86,7 +86,7 @@ class DenseKernalInitializer(Initializer):
         """
         del partition_info
         init_range = 1.0 / np.sqrt(shape[1])
-        return tf.random_uniform(shape, -init_range, init_range, dtype=dtype)
+        return tf.random.uniform(shape, -init_range, init_range, dtype=dtype)
 
 
 def round_filters(filters, global_params):
